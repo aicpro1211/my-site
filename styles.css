@@ -44,6 +44,69 @@ body {
   padding: 2rem 1rem;
 }
 
+.bubble-layer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bubble {
+  position: absolute;
+  left: var(--left, 50%);
+  bottom: -160px;
+  width: var(--size, 60px);
+  height: var(--size, 60px);
+  border-radius: 999px;
+  opacity: var(--opacity, 0.55);
+  filter: blur(0.2px);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.25) 40%, rgba(255, 255, 255, 0.08) 65%, transparent 72%),
+    radial-gradient(circle at 70% 75%, rgba(255, 255, 255, 0.35), transparent 55%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 10px 40px rgba(255, 255, 255, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  mix-blend-mode: overlay;
+  animation:
+    bubble-float var(--duration, 8s) linear forwards,
+    bubble-wobble 1.8s ease-in-out infinite;
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: inherit;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.55), transparent 45%);
+  opacity: 0.8;
+}
+
+@keyframes bubble-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+    opacity: calc(var(--opacity, 0.55) * 0.85);
+  }
+  10% {
+    opacity: var(--opacity, 0.55);
+  }
+  100% {
+    transform: translate3d(var(--drift, 30px), calc(-1 * var(--travel, 120vh)), 0) scale(1.08);
+    opacity: 0;
+  }
+}
+
+@keyframes bubble-wobble {
+  0%,
+  100% {
+    translate: -4px 0;
+  }
+  50% {
+    translate: 4px 0;
+  }
+}
+
 .card {
   width: min(760px, 100%);
   padding: clamp(1.25rem, 3vw, 2.25rem);
@@ -52,6 +115,8 @@ body {
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
 }
 
 .header {
@@ -154,5 +219,11 @@ p {
 
   .badge {
     background: rgba(2, 6, 23, 0.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble {
+    display: none;
   }
 }
