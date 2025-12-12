@@ -4,86 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>aic1211 | 自己紹介</title>
-    <style>
-      :root {
-        color-scheme: light;
-        --bg1: #f5f7fa;
-        --bg2: #c3cfe2;
-        --card: rgba(255, 255, 255, 0.86);
-        --text: #1f2937;
-        --muted: #4b5563;
-        --border: rgba(0, 0, 0, 0.08);
-      }
-
-      body {
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        background: linear-gradient(135deg, var(--bg1), var(--bg2));
-        color: var(--text);
-      }
-
-      main {
-        width: min(720px, calc(100vw - 2rem));
-        padding: 2.25rem;
-        border-radius: 1rem;
-        background: var(--card);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        border: 1px solid var(--border);
-      }
-
-      h1 {
-        margin: 0 0 0.25rem;
-        letter-spacing: 0.02em;
-      }
-
-      h2 {
-        margin: 0 0 1.25rem;
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--muted);
-      }
-
-      p {
-        margin: 0.75rem 0 0;
-        color: var(--muted);
-        line-height: 1.75;
-      }
-
-      dl {
-        display: grid;
-        grid-template-columns: 8rem 1fr;
-        gap: 0.5rem 1rem;
-        margin: 1.25rem 0 0;
-        padding: 0;
-      }
-
-      dt {
-        color: var(--muted);
-      }
-
-      dd {
-        margin: 0;
-      }
-
-      .badge {
-        display: inline-block;
-        padding: 0.2rem 0.6rem;
-        border-radius: 999px;
-        font-size: 0.85rem;
-        border: 1px solid var(--border);
-        background: rgba(255, 255, 255, 0.6);
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main>
-      <h1>ようこそ</h1>
-      <h2>試作ページへ</h2>
+    <main class="card">
+      <header class="header">
+        <img class="avatar" src="kuma.jpg" alt="kuma" />
+        <h1>ようこそ</h1>
+        <h2>試作ページへ</h2>
+      </header>
       <p>aic1211 の自己紹介ページです。</p>
-      <dl>
+      <p>私は慶應義塾大学の学生です。</p>
+      <dl class="meta">
         <dt>表示名</dt>
         <dd><span class="badge">aic1211</span></dd>
         <dt>肩書</dt>
